@@ -1,5 +1,6 @@
 
-Front End TrendTalks
+Front End TrendTalks Reactjs
+
 Integrantes:
 
 		Oscar Alejandro García Gómez		1642161
