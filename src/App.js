@@ -1,17 +1,81 @@
-import React from 'react';
+import React, { useState } from "react";
 import './App.css';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
 
+
+
+
 class App extends React.Component{
+
+  
+  handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
+    this.setState({name: ""});
+    this.setState({lastname: ""});
+    this.setState({username: ""});
+    this.setState({password: ""});
+    this.setState({birthday: ""});
+    this.setState({email: ""});
+
+};
+
+    RegistrarUsuario = (event) => { 
+      console.log("hola api xd");
+      //http://localhost:8080/courses/1/comments/1/img
+      fetch('http://localhost:3001/api/users/', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          },
+          // We convert the React state to JSON and send it as the POST body
+          body: JSON.stringify(this.state)
+        }).then(function(response) {
+          alert("Usuario registrado " + "Status: " + response.status)
+          return response.json();
+        });
+
+      event.preventDefault();
+  }
+
+  Login = (event) => { 
+    console.log("hola api xd");
+    //http://localhost:8080/courses/1/comments/1/img
+    fetch('http://localhost:3001/api/users/login', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        // We convert the React state to JSON and send it as the POST body
+        body: JSON.stringify(this.state)
+      }).then(function(response) {
+        if(response.status == 400){
+          alert("El usuaro no esta registrado " + "Status: " + response.status)
+        }else{
+          alert("El usuario inicio sesion " + "Status: " + response.status)
+        }
+        return response.json();
+      });
+
+    event.preventDefault();
+}
+  
   state={
     loginModal: false,
-  }
-  state={
     RegisterModal: false,
+    name:"",
+    lastname:"",
+    username:"",
+    password:"",
+    birthday:"",
+    email:""
   }
+
 
   abrirModal=()=>{
     this.setState({loginModal: !this.state.loginModal});
@@ -51,16 +115,19 @@ class App extends React.Component{
 
         <ModalBody>
           <br></br>
-          <FormGroup>
-            <Input type="text" id="username" placeholder="USUARIO"/>
-          </FormGroup>
-          <br></br>
-          <FormGroup>
-            <Input type="password" id="password" placeholder="CONTRASEÑA"/>
-          </FormGroup>
-          <br></br>
-          <Button color="success" size="lg" block>Iniciar Sesión</Button>
-          
+
+          <form onSubmit={this.Login}>
+            <FormGroup>
+            <Input type="text" name="usuario" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} placeholder="USUARIO"/>
+            </FormGroup>
+            <br></br>
+            <FormGroup>
+            <Input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="CONTRASEÑA"/>
+            </FormGroup>
+            <br></br>
+            <Button color="success" size="lg" block type="submit">Iniciar Sesión</Button>
+          </form>
+        
         </ModalBody>
 
         <ModalFooter>
@@ -77,35 +144,36 @@ class App extends React.Component{
 
         <ModalBody>
           <br></br>
-          <FormGroup>
-            <Input type="text" id="registro_nombre" placeholder="NOMBRE(S)"/>
+          <form onSubmit={this.RegistrarUsuario}>
+          <FormGroup >
+            <Input type="text" name="nombres" value={this.state.name}  onChange={(e) => this.setState({name: e.target.value})} placeholder="NOMBRE(S)"/>
             <br></br>
-            <Input type="text" id="registro_apellido" placeholder="APELLIDOS(S)"/>
+            <Input type="text" name="apellidos" value={this.state.lastname} onChange={(e) => this.setState({lastname: e.target.value})} placeholder="APELLIDOS(S)"/>
             <br></br>
-            <Input type="text" id="registro_usuario" placeholder="USUARIO"/>
+            <Input type="text" name="usuario" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} placeholder="USUARIO"/>
             <br></br>
-            <Input type="password" id="registro_password" placeholder="CONTRASEÑA"/>
+            <Input type="email" name="email" value={this.state.email} onChange={(e) => this.setState({email: e.target.value})} placeholder="EMAIL"/>
             <br></br>
-            <Input type="password" id="registro_password" placeholder="CONTRASEÑA"/>
+            <Input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="CONTRASEÑA"/>
             <br></br>
             <label>
               Fecha de Nacimiento:
               <br></br>
               <br></br>
-              <Input type="date" name="registro_nacimiento"  style={{width: "450px"}}>
+              <Input type="date" name="birth"  value={this.state.birthday} onChange={(e) => this.setState({birthday: e.target.value})} style={{width: "450px"}}>
               </Input>
             </label>
+            <br></br>
+            <br></br>
+            <Input type="submit" color="green" size="lg"  >Registrar usuario</Input>
           </FormGroup>
-          
+          </form>
+        
           <br></br>
-          <Button color="success" size="lg" block>Registro de usuario</Button>
           
         </ModalBody>
 
-        {/* <ModalFooter>
-          <img src={imagen} style={{width:'98%'}}></img>
-        </ModalFooter>
-         */}
+       
       </Modal>
 
       </>
