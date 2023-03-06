@@ -24,9 +24,7 @@ class App extends React.Component{
 };
 
     RegistrarUsuario = (event) => { 
-      console.log("hola api xd");
-      //http://localhost:8080/courses/1/comments/1/img
-      fetch('http://localhost:3001/api/users/', {
+      fetch('https://trendtalks.onrender.com/api/users/', {
           method: 'POST',
           headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -43,9 +41,8 @@ class App extends React.Component{
   }
 
   Login = (event) => { 
-    console.log("hola api xd");
     //http://localhost:8080/courses/1/comments/1/img
-    fetch('http://localhost:3001/api/users/login', {
+    fetch('https://trendtalks.onrender.com/api/users/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json, text/plain, */*',
