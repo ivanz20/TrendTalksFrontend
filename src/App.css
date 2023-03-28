@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&display=swap');
 .App {
   text-align: center;
 }
@@ -41,17 +43,40 @@
 /*PIA CSS*/
 
 .principal{
-  align-items: center;
+  align-items: left;
   display: flex;
-  height: 15vh;
+  height: 95vh;
+  width: 50vh;
+  background-color: #C8D3D5;
+  border-radius: 50px 0px 0px 50px;
+  position: absolute;
+  left: 2%;
+  top: 2%;
+}
 
-  background-color: rgba(255,255,255,0.3);
-  border-radius: 10px;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+.contenido-pagina{
+  align-items: left;
+  display: flex;
+  height: 95vh;
+  width: 70%;
+  background-color: white;
+  position: absolute;
+  left: 25%;
+  top: 2%;
+  /* border: #282c34 solid 1px; */
+}
+.navbar-opciones{
+  position: absolute;
+  width: 100%;
+  height: 520px;
+  /* border: #03802C solid 2px; */
+  border-radius: 50px 0px 0px 0px;
+
 }
 .secundario{
+  position: absolute;
   margin: 5vh;
+  top: 73%;
 }
 
 body{
@@ -61,5 +86,263 @@ body{
   justify-content: center;
   align-items: center;
   background-size: cover;
-  background-image: url("./img/fondo1.jpg");
+  /* background-image: url("./img/fondo1.jpg"); */
+}
+
+#boton-iniciosesion{
+  background-color: #0CCA4A;
+  border: none;
+  height: 7vh;
+  width: 40vh;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 40px;
+  font-size: medium;
+  transition: 0.5s;
+  font-weight:600;
+}
+#boton-iniciosesion:hover{
+  background-color: white;
+  border: #0CCA4A solid 2px;
+  color: #0CCA4A;
+  transition: 0.5s;
+}
+
+#boton-registrarse{
+  background-color: #03802C;
+  border: none;
+  height: 7vh;
+  width: 40vh;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 40px;
+  font-size: medium;
+  transition: 0.5s;
+  margin-top: -10px;
+  font-weight:600;
+}
+
+#boton-registrarse:hover{
+  background-color: white;
+  border: #03802C solid 2px;
+  color: #03802C;
+  transition: 0.5s;
+}
+
+#logo-tt{
+  margin-left: 10%;
+  margin-top: 10%;
+  position: relative;
+}
+
+#barra-buscar{
+  position: relative;
+  top: 30px;
+  left: 10%;
+  padding: 10px;
+  padding-left: 30px;
+  width: 81%;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Montserrat';
+  font-weight:500;
+}
+
+#barra-buscar:focus {
+  outline-width: 0;
+}
+
+#home-navbar{
+  position: absolute;
+  left: 10%;
+  top: 35%;
+  width: fit-content;
+  padding: 15px;
+  transition: 0.5s;
+  border-radius: 30px ;
+  border: none;
+}
+#home-navbar:hover{
+  border: none;
+  transform: scale(1.03);
+  transition: 0.5s;
+  border-radius: 30px;
+  background-color: white;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.navbar-items{
+  position: relative;
+  font-family: 'Montserrat';
+  font-weight:600;
+  margin-left: 10px;
+  font-size: 20px;
+  top: 1px;
+  color: #738386;
+}
+
+#btn-iniciosesion2{
+  padding: 10px;
+  border-radius: 50px;
+  font-family: 'Montserrat';
+  font-weight:600;
+  background-color: #0CCA4A;
+  border: none;
+}
+#btn-iniciosesion2:hover{
+  background-color: #03802C;
+  transition: 0.5s;
+}
+.titulo-modal{
+  font-family: 'Montserrat';
+  font-weight:600;
+  color: #03802C;
+  position: relative;
+  top: 2px;
+}
+#btn-registro{
+  padding: 10px;
+  border-radius: 50px;
+  font-family: 'Montserrat';
+  font-weight:600;
+  background-color: #0CCA4A;
+  border: none;
+  color: white;
+}
+#btn-registro:hover{
+  background-color: #03802C;
+  transition: 0.5s;
+}
+
+.pregunta-shortalk{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  color: #282c34;
+  margin-left: 7%;
+  font-size: large;
+
+}
+.shorttalks{
+  /* border: #282c34 solid 1px; */
+  position: absolute;
+  margin-top: 4%;
+  left: 5%;
+  width: 90%;
+  height: 17vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display:inline-flex;
+  align-items: center;
+  align-content: center;
+
+}
+.shorttalks::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+.user{
+  position: absolute;
+  /* border: #c39500 solid 1px !important; */
+  width: 10% !important;
+  height: 100% !important;
+  align-items: center !important;
+
+}
+.friends-short{
+  position: relative;
+  /* border: #0CCA4A solid 1px; */
+  width: 10%;
+  height: 100%;
+  align-items: center;
+  margin-left: 3.5vh;
+  cursor: pointer;
+}
+.fotoperfil{
+  position: relative;
+  width: 12.5vh;
+  height: 12.5vh;
+  background-size: cover;
+  border-radius: 100%;
+  background-color: #738386;
+}
+
+.isShortUpload{
+  border: #0CCA4A solid 5px;
+}
+
+.nombre-short{
+  font-family: 'Montserrat';
+  font-weight: 300;
+  position: relative;
+  margin-left: 20%;
+}
+.fotoperfil-friend{
+  position: relative;
+  width: 12.5vh;
+  height: 12.5vh;
+  background-size: cover;
+  border-radius: 100%;
+    background-image: url("./img/pp1.jpg");
+}
+.posts-tt{
+  position: absolute;
+  /* border: #282c34 solid 1px; */
+  width: 80%;
+  height: 70%;
+  margin-top: 18%;
+  margin-left: 10%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.posts-tt::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
+.post-user{
+  background-color: #F5F3F3;
+  height: 150px;
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  display: inline-flex;
+}
+.fotoperfil-post{
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  border-radius: 100%;
+  background-image: url("./img/pp1.jpg");
+}
+.fotoarea{
+  /* border: #282c34 solid 1px; */
+  height: 100%;
+  width: fit-content;
+  padding: 20px;
+}
+.text-postarea{
+  /* border: #282c34 solid 1px; */
+  height: 100%;
+  width: 90%;
+}
+.post-content{
+  position: relative;
+  margin-left: 3%;
+  margin-top: 3%;
+  font-family: 'Montserrat';
+
+}
+.post-content > button{
+  position: absolute;
+  right: 0;
+  
+}
+.boton-post{
+  border: none;
+  background-color: transparent;
+  transition: 0.5s;
+}
+.boton-post:hover{
+  transform: scale(1.05);
+  transition: 0.5s;
+}
+#likebtn{
+  margin-right: 55px;
 }

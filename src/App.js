@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import './App.css';
 import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { XCircle } from 'react-bootstrap-icons';
+import { SdCard, XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
-
+import logo from  './img/logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHashtag } from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faComment } from '@fortawesome/free-solid-svg-icons'
 
 
 
 class App extends React.Component{
 
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
@@ -82,47 +86,221 @@ class App extends React.Component{
     this.setState({RegisterModal: !this.state.RegisterModal});
   }
 
+ 
 
   render(){
-    /*
-    const modalStyles={
-      position: "absolute",
-      top:"50%",
-      left:"50%",
-      transform: "translate(-50%, -50%)"
-    }
-    */
+   
     const tab = <>&nbsp;&nbsp;&nbsp;</>;
 
     return(
+
       <>
       <div className="principal">
-        <div className="secundario">
-          <Button color="success" onClick={this.abrirModal}>Iniciar Sesión</Button>
-          {tab}
-          <Button color="secondary" onClick={this.abrirModalRegistro}>Registrarse</Button>
+        <div className="navbar-opciones">
+          <img id="logo-tt" src={logo} style={{width:'15%'}}></img>
+          <input id="barra-buscar" placeholder="Buscar" />
+          <div id="home-navbar">
+          <FontAwesomeIcon icon={faHashtag} size="xl" color="#738386"/>
+            <text className="navbar-items">EXPLORAR</text>
+          </div>
+
         </div>
+        <div className="secundario">
+          <Button color="success" id="boton-iniciosesion" onClick={this.abrirModal}>INICIAR SESION</Button>
+          <br></br>
+          {tab}
+          <Button color="secondary" id="boton-registrarse" onClick={this.abrirModalRegistro}>REGISTRARSE</Button>
+        </div>
+      </div>
+      <div className="contenido-pagina">
+      <text className="pregunta-shortalk">¿Que opinas de la inflación?</text>
+        <div className="shorttalks">
+        
+          <div className="friends-short user">
+              <div className="fotoperfil isShortUpload"></div>
+              <text className="nombre-short">Agregar</text>
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload"></div>
+              <text className="nombre-short">faribb10</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload"></div>
+              <text className="nombre-short">user1</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload"></div>
+              <text className="nombre-short">user2</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload"></div>
+              <text className="nombre-short">user3</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload"></div>
+              <text className="nombre-short">user4</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload "></div>
+              <text className="nombre-short">user2</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload "></div>
+              <text className="nombre-short">user3</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user4</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user2</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user3</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user4</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user2</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user3</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user4</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user2</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user3</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user4</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user2</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user3</text> 
+          </div>
+          <div className="friends-short">
+              <div className="fotoperfil-friend "></div>
+              <text className="nombre-short">user4</text> 
+          </div>
+          
+        </div>
+        <div className="posts-tt">
+          <div className="post-user">
+              <div className="fotoarea">
+                <div className="fotoperfil-post "></div>
+              </div>
+              <div className="text-postarea">
+                  <div className="post-content">
+                    <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                    <br></br>
+                    <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
+                    <br></br>
+                    <text>#Tecate #Helado</text>
+                    <br></br>
+                    <button className="boton-post" id="likebtn"><FontAwesomeIcon icon={faHeart} size="2xl" style={{color: "#CA0C0C",}} /></button>
+                    <button className="boton-post"><FontAwesomeIcon icon={faComment} size="2xl" style={{color: "#0CCA4A",}} /></button>
+                  </div>
+              </div>
+          </div>
+          
+          
+          <div className="post-user">
+              <div className="fotoarea">
+                <div className="fotoperfil-post "></div>
+              </div>
+              <div className="text-postarea">
+                  <div className="post-content">
+                    <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                    <br></br>
+                    <text>Un saludo a la bandita q la sigue cotorriando</text>
+                    <br></br>
+                    <text>#Cotorro #GPI </text>
+                    <br></br>
+                    <button className="boton-post" id="likebtn"><FontAwesomeIcon icon={faHeart} size="2xl" style={{color: "#CA0C0C",}} /></button>
+                    <button className="boton-post"><FontAwesomeIcon icon={faComment} size="2xl" style={{color: "#0CCA4A",}} /></button>
+                  </div>
+              </div>
+          </div>
+
+          <div className="post-user">
+              <div className="fotoarea">
+                <div className="fotoperfil-post "></div>
+              </div>
+              <div className="text-postarea">
+                  <div className="post-content">
+                    <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                    <br></br>
+                    <text>Un saludo a la bandita q la sigue cotorriando</text>
+                    <br></br>
+                    <text>#Cotorro #GPI </text>
+                    <br></br>
+                    <button className="boton-post" id="likebtn"><FontAwesomeIcon icon={faHeart} size="2xl" style={{color: "#CA0C0C",}} /></button>
+                    <button className="boton-post"><FontAwesomeIcon icon={faComment} size="2xl" style={{color: "#0CCA4A",}} /></button>
+                  </div>
+              </div>
+          </div>
+
+          <div className="post-user">
+              <div className="fotoarea">
+                <div className="fotoperfil-post "></div>
+              </div>
+              <div className="text-postarea">
+                  <div className="post-content">
+                    <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                    <br></br>
+                    <text>Un saludo a la bandita q la sigue cotorriando</text>
+                    <br></br>
+                    <text>#Cotorro #GPI </text>
+                    <br></br>
+                    <button className="boton-post" id="likebtn"><FontAwesomeIcon icon={faHeart} size="2xl" style={{color: "#CA0C0C",}} /></button>
+                    <button className="boton-post"><FontAwesomeIcon icon={faComment} size="2xl" style={{color: "#0CCA4A",}} /></button>
+                  </div>
+              </div>
+          </div>
+        </div>
+        
+        
+
       </div>
 
       <Modal isOpen={this.state.loginModal}>
         <ModalHeader>
           <XCircle color="#0CCA4A" size={30} onClick={this.abrirModal}/>
-          {tab}INICIO DE SESIÓN
+          {tab}
+          <text className="titulo-modal">INICIO DE SESIÓN</text>
         </ModalHeader>
 
         <ModalBody>
           <br></br>
-
           <form onSubmit={this.Login}>
             <FormGroup>
-            <Input type="text" name="usuario" value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} placeholder="USUARIO"/>
+            <Input type="text" name="usuario"  value={this.state.username} onChange={(e) => this.setState({username: e.target.value})} placeholder="USUARIO"/>
             </FormGroup>
             <br></br>
             <FormGroup>
             <Input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({password: e.target.value})} placeholder="CONTRASEÑA"/>
             </FormGroup>
             <br></br>
-            <Button color="success" size="lg" block type="submit">Iniciar Sesión</Button>
+            <Button  size="lg" block type="submit" id="btn-iniciosesion2" placeholder="Iniciar Sesión" >ENTRAR</Button>
+            <br></br>
           </form>
         
         </ModalBody>
@@ -136,7 +314,8 @@ class App extends React.Component{
       <Modal isOpen={this.state.RegisterModal}>
         <ModalHeader>
           <XCircle color="green" size={30} onClick={this.abrirModalRegistro}/>
-          {tab}REGISTRO DE USUARIO
+          {tab}
+          <text className="titulo-modal">REGISTRO DE USUARIO</text>
         </ModalHeader>
 
         <ModalBody>
@@ -162,7 +341,8 @@ class App extends React.Component{
             </label>
             <br></br>
             <br></br>
-            <Input type="submit" color="green" size="lg"  >Registrar usuario</Input>
+            <br></br>
+            <Input type="submit"  size="lg"  value="REGISTRAR" id="btn-registro">Registrar usuario</Input>
           </FormGroup>
           </form>
         
