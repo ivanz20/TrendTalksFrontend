@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent } from "react";
 import './App.css';
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label} from 'reactstrap';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label, List} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { SdCard, XCircle } from 'react-bootstrap-icons';
+import { Display, SdCard, XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
 import logo from  './img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -69,6 +69,8 @@ class App extends React.Component{
   state={
     loginModal: false,
     RegisterModal: false,
+    PublicacionModal: false,
+    PerfilModal: false,
     name:"",
     lastname:"",
     username:"",
@@ -76,14 +78,21 @@ class App extends React.Component{
     birthday:"",
     email:""
   }
-
+  Publicacion={
+    comentario:""
+  }
 
   abrirModal=()=>{
     this.setState({loginModal: !this.state.loginModal});
   }
-  
+  abrirModalPublicacion=()=>{
+    this.setState({PublicacionModal: !this.state.PublicacionModal});
+  }
   abrirModalRegistro=()=>{
     this.setState({RegisterModal: !this.state.RegisterModal});
+  }
+  abrirModalPerfil=()=>{
+    this.setState({PerfilModal: !this.state.PerfilModal});
   }
 
  
@@ -105,11 +114,17 @@ class App extends React.Component{
           </div>
 
         </div>
+        
         <div className="secundario">
+        <Button color="success" id="boton-iniciosesion" onClick={this.abrirModalPublicacion}>PUBLICAR</Button>
+          <br></br>
+          {tab}
           <Button color="success" id="boton-iniciosesion" onClick={this.abrirModal}>INICIAR SESION</Button>
           <br></br>
           {tab}
           <Button color="secondary" id="boton-registrarse" onClick={this.abrirModalRegistro}>REGISTRARSE</Button>
+          {tab}
+          <Button color="secondary" id="boton-registrarse" onClick={this.abrirModalPerfil}>PERFIL</Button>
         </div>
       </div>
       <div className="contenido-pagina">
@@ -310,6 +325,30 @@ class App extends React.Component{
         </ModalFooter>
         
       </Modal>
+      <Modal isOpen={this.state.PublicacionModal}>
+        <ModalHeader>
+          <XCircle color="#0CCA4A" size={30} onClick={this.abrirModalPublicacion}/>
+          {tab}
+          <text className="titulo-modal"></text>
+        </ModalHeader>
+
+        <ModalBody>
+          <br></br>
+          <form >
+            <FormGroup>
+            <Input type="text" name="publcacion"   value={this.Publicacion.comentario} onChange={(e) => this.setState({comentario: e.target.value})} placeholder="Di lo que piensas..."/>
+            </FormGroup>
+            <br></br>
+            <div  style={{height: "7%"}}>
+            <Button  block type="submit" id="btn-publicar" placeholder="Publicar" >Hacer publicacion</Button>
+            </div>
+            <br></br>
+          </form>
+        
+        </ModalBody>
+
+        
+      </Modal>
 
       <Modal isOpen={this.state.RegisterModal}>
         <ModalHeader>
@@ -352,7 +391,71 @@ class App extends React.Component{
 
        
       </Modal>
-
+      
+      <Modal isOpen={this.state.PerfilModal}>
+      <ModalHeader>
+         
+        <div class="Imagen-Fondo">
+        <XCircle color="white" size={30} onClick={this.abrirModalPerfil}/>
+          {tab}
+          <text className="titulo-modal">NOMBRE DE USUARIO</text>
+          <text className="Subtitulo-modal">@CorreoUsuario</text>
+          <div className="friends-short">
+              <div className="fotoperfil-friend isShortUpload Perfil-perfil"></div>
+              <text className="nombre-short"></text> 
+              <Button color="success" id="boton-follow" >Seguir</Button>
+          
+          </div>
+         
+        </div>
+        </ModalHeader>
+         
+        <ModalBody>
+          <div className="post-user-perfil">
+              
+              <div className="text-postarea-perfil">
+                  <div className="post-content-perfil">
+                    <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
+                    <br></br>
+                    <text className="Nlikes_comentarios">3 likes - 2 comentarios</text>
+                    <br></br>
+                    <text className="HorayFecha">@Oscarin21 - Hace 10 minutos</text>
+                  </div>
+              </div>
+          </div>
+          <div className="post-user-perfil">
+              
+              <div className="text-postarea-perfil">
+                  <div className="post-content-perfil">
+                    <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                    <br></br>
+                    <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
+                    <br></br>
+                    <text>#Tecate #Helado</text>
+                    <br></br>
+                  </div>
+              </div>
+          </div>
+          <div className="post-user-perfil">
+              
+              <div className="text-postarea-perfil">
+                  <div className="post-content-perfil">
+                    <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                    <br></br>
+                    <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
+                    <br></br>
+                    <text>#Tecate #Helado</text>
+                    <br></br>
+                  </div>
+              </div>
+          </div>
+        </ModalBody>
+        <ModalFooter>
+        
+        <br></br>
+        </ModalFooter>
+       
+      </Modal>
       </>
     )
   }
