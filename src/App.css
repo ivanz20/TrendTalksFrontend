@@ -14,7 +14,10 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.Perfil-perfil{
+  width: 150px !important;
+  height: 150px !important;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -25,7 +28,19 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+#div-con-fondo{
+  background-image:"./img/image1.jpeg";
+}
+.Imagen-Fondo {
+  background-image:url("./img/descarga.jfif");
+  margin-left: auto;
+  background-attachment: fixed;
+  background-size:35%;
+  position:static;
+  border-radius: 7%;
+  width:480px;
+  height:200px;
+}
 .App-link {
   color: #61dafb;
 }
@@ -39,7 +54,12 @@
   }
 }
 
-
+.Nlikes_comentarios{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.HorayFecha{
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 /*PIA CSS*/
 
 .principal{
@@ -76,7 +96,7 @@
 .secundario{
   position: absolute;
   margin: 5vh;
-  top: 73%;
+  top: 66%;
 }
 
 body{
@@ -89,6 +109,10 @@ body{
   /* background-image: url("./img/fondo1.jpg"); */
 }
 
+#boton-salirperfil{
+  display: flex;
+  position:relative;
+}
 #boton-iniciosesion{
   background-color: #0CCA4A;
   border: none;
@@ -100,7 +124,29 @@ body{
   transition: 0.5s;
   font-weight:600;
 }
+
 #boton-iniciosesion:hover{
+  background-color: white;
+  border: #0CCA4A solid 2px;
+  color: #0CCA4A;
+  transition: 0.5s;
+}
+#boton-follow{
+  background-color: #0CCA4A;
+  border: none;
+  height: 6vh;
+  width: 40vh;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 40px;
+  font-size: medium;
+  transition: 0.5s;
+  font-weight:600;
+  position: relative;
+  left: 145px;
+  top: -66px;
+}
+
+#boton-follow:hover{
   background-color: white;
   border: #0CCA4A solid 2px;
   color: #0CCA4A;
@@ -192,12 +238,22 @@ body{
   background-color: #03802C;
   transition: 0.5s;
 }
+
 .titulo-modal{
   font-family: 'Montserrat';
-  font-weight:600;
-  color: #03802C;
-  position: relative;
-  top: 2px;
+  font-weight:900;
+  color: #ffffff;
+  position:relative;
+  top: 63px;
+  left: 140px;
+}
+.Subtitulo-modal{
+  font-family: 'Montserrat';
+  font-weight:500;
+  color: #ffffff;
+  position:relative;
+  top: 88px;
+  left: -92px;
 }
 #btn-registro{
   padding: 10px;
@@ -211,6 +267,18 @@ body{
 #btn-registro:hover{
   background-color: #03802C;
   transition: 0.5s;
+}
+#btn-publicar{
+    background-color: #0CCA4A;
+    border: none;
+    height: 7vh;
+    width: 40vh !important;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 40px;
+    font-size: medium;
+    transition: 0.5s;
+    font-weight:600;
+  
 }
 
 .pregunta-shortalk{
@@ -303,6 +371,15 @@ body{
   margin-bottom: 20px;
   display: inline-flex;
 }
+.post-user-perfil{
+  background-color: #F5F3F3;
+  height: 120px;
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 5px;
+  display: inline-flex;
+  position: relative;
+}
 .fotoperfil-post{
   position: relative;
   width: 100px;
@@ -322,6 +399,11 @@ body{
   height: 100%;
   width: 90%;
 }
+.text-postarea-perfil{
+  /* border: #282c34 solid 1px; */
+  height: 0%;
+  width: 90%;
+}
 .post-content{
   position: relative;
   margin-left: 3%;
@@ -330,6 +412,18 @@ body{
 
 }
 .post-content > button{
+  position: absolute;
+  right: 0;
+  
+}
+.post-content-perfil{
+  position: relative;
+  margin-left: 3%;
+  margin-top: 3%;
+  font-family: 'Montserrat';
+
+}
+.post-content-perfil > button{
   position: absolute;
   right: 0;
   

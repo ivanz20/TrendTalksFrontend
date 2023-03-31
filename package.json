@@ -10,6 +10,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.3",
+    "express": "^4.18.2",
     "react": "^18.2.0",
     "react-bootstrap-icons": "^1.10.2",
     "react-dom": "^18.2.0",
@@ -41,5 +42,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Red social realizada en Reactjs y Nodejs.\r TrendTalks es una red social que busca conectar de una manera cultural a las personas, dandoles la oportunidad de hablar de lo que todo el mundo habla y emitir una opinion de forma breve y concisa, con plena libertad de expresión, sin filtros ni censura.",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC"
 }
