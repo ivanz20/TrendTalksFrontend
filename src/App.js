@@ -1,6 +1,6 @@
 import React, { useState, ChangeEvent } from "react";
 import './App.css';
-import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label, List} from 'reactstrap';
+import {Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label, List, Papi} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { Display, SdCard, XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
@@ -71,6 +71,7 @@ class App extends React.Component{
     RegisterModal: false,
     PublicacionModal: false,
     PerfilModal: false,
+    ShortModal: false,
     name:"",
     lastname:"",
     username:"",
@@ -94,7 +95,9 @@ class App extends React.Component{
   abrirModalPerfil=()=>{
     this.setState({PerfilModal: !this.state.PerfilModal});
   }
-
+  abrirModalShort=()=>{
+    this.setState({ShortModal: !this.state.ShortModal});
+  }
  
 
   render(){
@@ -135,13 +138,13 @@ class App extends React.Component{
               <div className="fotoperfil isShortUpload"></div>
               <text className="nombre-short">Agregar</text>
           </div>
-          <div className="friends-short">
+          <div className="friends-short" onClick={this.abrirModalShort}>
               <div className="fotoperfil-friend isShortUpload"></div>
               <text className="nombre-short">faribb10</text> 
           </div>
-          <div className="friends-short">
+          <div className="friends-short" onClick={this.abrirModalPublicacion}>
               <div className="fotoperfil-friend isShortUpload"></div>
-              <text className="nombre-short">user1</text> 
+              <text className="nombre-short">papiZavala</text> 
           </div>
           <div className="friends-short">
               <div className="fotoperfil-friend isShortUpload"></div>
@@ -295,6 +298,19 @@ class App extends React.Component{
         
 
       </div>
+
+      <Modal isOpen={this.state.ShortModal}>
+        <ModalHeader>
+          <XCircle color="#0CCA4A" size={30} onClick={this.abrirModalShort}/>
+          {tab}
+          <text className="titulo-modal"></text>
+        </ModalHeader>
+
+        <ModalBody>
+          <h1>TEST</h1>
+        </ModalBody>
+
+      </Modal>
 
       <Modal isOpen={this.state.loginModal}>
         <ModalHeader>
