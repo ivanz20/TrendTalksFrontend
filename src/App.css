@@ -440,3 +440,77 @@ body{
 #likebtn{
   margin-right: 55px;
 }
+
+
+/*Explore*/
+
+.exploreCont {
+  position: absolute;
+  margin-top: 4%;
+  left: 10%;
+  width: 90%;
+  height: 17vh;
+  /*display:inline-flex;*/
+  align-items: center;
+  align-content: center;
+}
+
+#boton-explore {
+  background-color: #b8b8b8;
+  border: none;
+  height: 7vh;
+  width: 60vh;
+  font-family: 'Montserrat', sans-serif;
+  font-size: medium;
+  transition: 0.5s;
+  font-weight: 600;
+}
+
+#boton-explore-use {
+  background-color: #555555;
+  border: none;
+  height: 7vh;
+  width: 60vh;
+  font-family: 'Montserrat', sans-serif;
+  font-size: medium;
+  transition: 0.5s;
+  font-weight: 600;
+}
+
+#txt-num-likes {
+  color: #0CCA4A;
+}
+
+.cont-hash {
+  position: relative;
+  width: 250px;
+  height: 150px;
+  background-size: cover;
+  border-radius: 20px;
+  background-color: #0CCA4A;
+
+}
+
+.hash-content {
+  position: relative;
+  margin-left: 7%;
+  margin-top: 3%;
+  font-family: 'Montserrat';
+}
+
+#txt-hash {
+  color: #F5F3F3;
+  position: relative;
+  margin-left: 10%;
+  margin-top: 25%;
+  font-family: 'Montserrat';
+  font-size: 26px;
+}
+
+#txt-categorias {
+  color: #555555;
+  position: relative;
+  margin-left: 55%;
+  font-family: 'Montserrat';
+  font-size: 26px;
+}
