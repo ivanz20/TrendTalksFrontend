@@ -37,9 +37,9 @@
   background-attachment: fixed;
   background-size:35%;
   position:static;
-  border-radius: 7%;
-  width:480px;
-  height:200px;
+  border-radius: 2%;
+  width:468px;
+  height:220px;
 }
 .App-link {
   color: #61dafb;
@@ -241,6 +241,14 @@ body{
 
 .titulo-modal{
   font-family: 'Montserrat';
+  font-weight:600;
+  color: #03802C;
+  position: relative;
+  top: 2px;
+}
+
+.titulo-modal-perfil{
+  font-family: 'Montserrat';
   font-weight:900;
   color: #ffffff;
   position:relative;
@@ -278,7 +286,7 @@ body{
     font-size: medium;
     transition: 0.5s;
     font-weight:600;
-  
+    margin-left: 28%;
 }
 
 .pregunta-shortalk{
@@ -510,7 +518,77 @@ body{
 #txt-categorias {
   color: #555555;
   position: relative;
-  margin-left: 55%;
+  margin-left: 70%;
   font-family: 'Montserrat';
   font-size: 26px;
+}
+
+.dropdown{
+  height: 0%;
+}
+
+a:-webkit-any-link {
+  text-decoration: none;
+}
+
+.comment-user{
+  background-color: #F5F3F3;
+  height: 100px;
+  width: 100%;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  display: inline-flex;
+}
+.fotoperfil-comment{
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background-size: cover;
+  border-radius: 100%;
+  background-image: url("./img/pp1.jpg");
+}
+.comment-content{
+  position: relative;
+  margin-left: 3%;
+  margin-top: 3%;
+  font-family: 'Montserrat';
+
+}
+.comment-content > button{
+  position: absolute;
+  right: 0;
+  
+}
+#likeCommentbtn{
+  margin-right: 25px;
+}
+
+.comment-post{
+  position: absolute;
+  /* border: #282c34 solid 1px; */
+  width: 80%;
+  margin-top: 60%;
+  margin-left: 10%;
+}
+#btn-comment{
+  padding: 10px;
+  width: 20%;
+  border-bottom-right-radius: 20px;
+  font-family: 'Montserrat';
+  font-weight:500;
+  background-color: #0CCA4A;
+  border: 1px solid #C8D3D5;
+  color: white;
+}
+#txt-comment{
+  padding: 10px;
+  padding-left: 30px;
+  width: 80%;
+  border-bottom-left-radius: 20px;
+  font-family: 'Montserrat';
+  font-weight:500;
+  border: 1px solid #C8D3D5;
+}
+#txt-comment:focus{
+  outline: none;
 }
