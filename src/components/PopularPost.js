@@ -1,10 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, useState, useEffect, useRef } from 'react'
 import '../App.css';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label, Dropdown, DropdownItem, DropdownMenu, DropdownToggle } from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faComment, faUnlock, faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faComment, faUnlock, faCircle, faHeart } from '@fortawesome/free-solid-svg-icons'
 
 export default class PopularPost extends Component {
     render() {
@@ -12,20 +11,12 @@ export default class PopularPost extends Component {
             <div className="contenido-pagina">
                 <div className="exploreCont">
                     <div class="btn-group" role="group">
-                        <Button id="boton-explore" >PARA TI</Button>
-                        <Button id="boton-explore-use" >POPULARES</Button>
+                        <Button id="boton-explore" href="/ForYou">PARA TI</Button>
+                        <Button id="boton-explore-use" href="/PopularPost">POPULARES</Button>
                     </div>
                     <br />
                     <br />
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Likes
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Likes</a>
-                            <a class="dropdown-item" href="#">Hash</a>
-                        </div>
-                    </div>
+                    <DropdownFun></DropdownFun>
                 </div>
                 <div>
 
@@ -127,4 +118,26 @@ export default class PopularPost extends Component {
             </div>
         )
     }
+}
+
+function DropdownFun() {
+
+    const [dropdown, setDropdown] = useState(false);
+
+    const abrirCerrarDropdown = () => {
+        setDropdown(!dropdown);
+    }
+
+    return (
+
+        <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} >
+            <DropdownToggle caret>Likes</DropdownToggle>
+            <DropdownMenu>
+                <DropdownItem header>Filtros</DropdownItem>
+                <DropdownItem divider />
+                <DropdownItem href="/PopularPost">Likes</DropdownItem>
+                <DropdownItem href="/PopularHash">Hashs</DropdownItem>
+            </DropdownMenu>
+        </Dropdown>
+    );
 }
