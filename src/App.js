@@ -6,7 +6,7 @@ import { Display, SdCard, XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
 import logo from './img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHashtag } from '@fortawesome/free-solid-svg-icons'
+import { faHashtag, faImages, faClapperboard} from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 
@@ -17,6 +17,7 @@ import PopularHash from "./components/PopularHash";
 import ForYou from "./components/ForYou";
 import Home from "./components/Home";
 import Navegation from "./components/Navegation";
+import Comments from "./components/Comments";
 
 
 class App extends React.Component {
@@ -117,10 +118,10 @@ class App extends React.Component {
             <div className="navbar-opciones">
               <img id="logo-tt" src={logo} style={{ width: '15%' }}></img>
               <input id="barra-buscar" placeholder="Buscar" />
-              <div id="home-navbar">
+              <Link id="home-navbar" to="/Explore">
                 <FontAwesomeIcon icon={faHashtag} size="xl" color="#738386" />
-                <Link to="/ForYou" className="navbar-items">EXPLORAR</Link>
-              </div>
+                <text className="navbar-items">EXPLORAR</text>
+              </Link>
 
             </div>
             <div className="secundario">
@@ -138,9 +139,11 @@ class App extends React.Component {
 
           <Routes>
             <Route path="/" exact element={<Home />} />
+            <Route path="/Explore" element={<ForYou />} />
             <Route path="/ForYou" element={<ForYou />} />
             <Route path="/PopularHash" element={<PopularHash />} />
             <Route path="/PopularPost" element={<PopularPost />} />
+            <Route path="/Comments" element={<Comments />} />
           </Routes>
         </BrowserRouter>
 
@@ -185,11 +188,14 @@ class App extends React.Component {
             <br></br>
             <form >
               <FormGroup>
-                <Input type="text" name="publcacion" value={this.Publicacion.comentario} onChange={(e) => this.setState({ comentario: e.target.value })} placeholder="Di lo que piensas..." />
+                <textarea type="text" name="publicacion" /*value={this.Publicacion.comentario}*/ onChange={(e) => this.setState({ comentario: e.target.value })} placeholder="Di lo que piensas..." /*contenteditable="true"*/ maxlength="150" rows={3} className="form-control" />
+                <text style={{ color: "#b8b8b8", marginLeft:"85%", fontSize: 15 }}>150 MAX</text>
               </FormGroup>
               <br></br>
               <div style={{ height: "7%" }}>
-                <Button block type="submit" id="btn-publicar" placeholder="Publicar" >Hacer publicacion</Button>
+                <button className="boton-post" title="Foto"><FontAwesomeIcon icon={faImages} size="2xl" style={{ color: "#0CCA4A", }} /></button>
+                <button className="boton-post" title="Video"><FontAwesomeIcon icon={faClapperboard} size="2xl" style={{ color: "#0CCA4A", }} /></button>
+                <Button type="submit" id="btn-publicar" placeholder="Publicar" >Hacer publicación</Button>
               </div>
               <br></br>
             </form>
@@ -201,7 +207,7 @@ class App extends React.Component {
 
         <Modal isOpen={this.state.RegisterModal}>
           <ModalHeader>
-            <XCircle color="green" size={30} onClick={this.abrirModalRegistro} />
+            <XCircle color="#0CCA4A" size={30} onClick={this.abrirModalRegistro} />
             {tab}
             <text className="titulo-modal">REGISTRO DE USUARIO</text>
           </ModalHeader>
@@ -224,7 +230,7 @@ class App extends React.Component {
                   Fecha de Nacimiento:
                   <br></br>
                   <br></br>
-                  <Input type="date" name="birth" value={this.state.birthday} onChange={(e) => this.setState({ birthday: e.target.value })} style={{ width: "450px" }}>
+                  <Input type="date" name="birth" value={this.state.birthday} onChange={(e) => this.setState({ birthday: e.target.value })} style={{ width: "466px" }}>
                   </Input>
                 </label>
                 <br></br>
@@ -247,7 +253,7 @@ class App extends React.Component {
             <div class="Imagen-Fondo">
               <XCircle color="white" size={30} onClick={this.abrirModalPerfil} />
               {tab}
-              <text className="titulo-modal">NOMBRE DE USUARIO</text>
+              <text className="titulo-modal-perfil">NOMBRE DE USUARIO</text>
               <text className="Subtitulo-modal">@CorreoUsuario</text>
               <div className="friends-short">
                 <div className="fotoperfil-friend isShortUpload Perfil-perfil"></div>
