@@ -6,10 +6,10 @@ import { Display, SdCard, XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
 import logo from './img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHashtag, faImages, faClapperboard} from '@fortawesome/free-solid-svg-icons'
+import { faHashtag, faImages, faClapperboard, faBell, faHouse} from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
-
+import {uploadFile} from './firebase/config'
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import PopularPost from "./components/PopularPost";
@@ -20,9 +20,17 @@ import Navegation from "./components/Navegation";
 import Comments from "./components/Comments";
 
 
+
 class App extends React.Component {
 
+  constructor(props){
+    const iduser = localStorage.getItem("usuariologgeado");
+    if(!iduser){
+      localStorage.setItem("loggedin", "False");
+    }
+    super(props)
 
+  }
   handleSubmit = (e) => {
     e.preventDefault();
     console.log(this.state);
@@ -32,6 +40,10 @@ class App extends React.Component {
     this.setState({ password: "" });
     this.setState({ birthday: "" });
     this.setState({ email: "" });
+    this.setState({ hashs: "" });
+    this.setState({ fotopost: "" });
+    this.setState({ videopost: "" });
+
 
   };
 
@@ -62,18 +74,55 @@ class App extends React.Component {
       },
       // We convert the React state to JSON and send it as the POST body
       body: JSON.stringify(this.state)
-    }).then(function (response) {
-      if (response.status == 400) {
-        alert("El usuaro no esta registrado " + "Status: " + response.status)
-      } else {
-        alert("El usuario inicio sesion " + "Status: " + response.status)
-      }
+    }).then(response => {
       return response.json();
+    })
+    .then(data => {
+        if (data.ok == true) {
+          console.log(data)
+          localStorage.setItem("loggedin", "True");
+          localStorage.setItem("usuariologgeado", data.usuario._id);
+          localStorage.setItem("usernamelogged", data.usuario.username);
+          this.setState({ username: data.usuario.username });
+
+        } 
     });
 
     event.preventDefault();
   }
 
+  CreatePost = (event) =>{
+      var today = new Date().toJSON().slice(0, 10);
+      let data = {
+        "username": this.state.username,
+        "post_content": this.state.comentario,
+        "post_date": today,
+        "hashs": this.state.hashs,
+        "category": "idk",
+        "likes": 0,
+        "comments": 0,
+        "photo_post": this.state.urlfoto,
+        "video_post": "urlvideo",
+        "user_profilepic": "urlpp",
+      }
+      fetch('https://trendtalks-service.onrender.com/api/talkie', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json, text/plain, */*',
+          'Content-Type': 'application/json'
+        },
+        // We convert the React state to JSON and send it as the POST body
+        body: JSON.stringify(data)
+      }).then(function (response) {
+        if(response.status == 200){
+          alert("Publicacion Exitante " + "Status: " + response.status)
+
+        }
+        return response.json();
+      });
+
+      event.preventDefault();
+  }
   state = {
     loginModal: false,
     RegisterModal: false,
@@ -84,7 +133,8 @@ class App extends React.Component {
     username: "",
     password: "",
     birthday: "",
-    email: ""
+    email: "",
+    urlfoto: ""
   }
   Publicacion = {
     comentario: ""
@@ -103,12 +153,19 @@ class App extends React.Component {
     this.setState({ PerfilModal: !this.state.PerfilModal });
   }
 
+  subirarchivos = async (archivo) => {
+    const result = await uploadFile(archivo)
+    document.getElementById("foto-subir1").style.opacity = "100%";
+    document.getElementById('foto-subir1').innerHTML = '<img src="' + result + '"></img>';
+    this.setState({ urlfoto: result});
+
+  }
 
 
   render() {
 
     const tab = <>&nbsp;&nbsp;&nbsp;</>;
-
+    
     return (
 
       <>
@@ -122,18 +179,33 @@ class App extends React.Component {
                 <FontAwesomeIcon icon={faHashtag} size="xl" color="#738386" />
                 <text className="navbar-items">EXPLORAR</text>
               </Link>
+              {localStorage.getItem("loggedin") !='False' ?  <Link id="inicio-navbar" to="/">
+                <FontAwesomeIcon icon={faHouse} size="xl" color="#738386" />
+                <text className="navbar-items">INICIO</text>
+              </Link> : null}
+             
+              {localStorage.getItem("loggedin") !='False' ?  <Link id="notifications-navbar" to="/Notifiaciones">
+                <FontAwesomeIcon icon={faBell} size="xl" color="#738386" />
+                <text className="navbar-items">NOTIFICACIONES</text>
+              </Link> : null}
+             
 
             </div>
             <div className="secundario">
-              <Button color="success" id="boton-iniciosesion" onClick={this.abrirModalPublicacion}>PUBLICAR</Button>
-              <br></br>
+
+              {localStorage.getItem("loggedin") !='False' ? <Button color="success" id="boton-iniciosesion" onClick={this.abrirModalPublicacion}>PUBLICAR</Button> : null}
+              
+         
               {tab}
-              <Button color="success" id="boton-iniciosesion" onClick={this.abrirModal}>INICIAR SESION</Button>
-              <br></br>
+              {localStorage.getItem("loggedin") != 'True' ? <Button color="success" id="boton-iniciosesion" onClick={this.abrirModal}>INICIAR SESION</Button> : null}
+            
+            
               {tab}
-              <Button color="secondary" id="boton-registrarse" onClick={this.abrirModalRegistro}>REGISTRARSE</Button>
+              {localStorage.getItem("loggedin") != 'True' ? <Button color="secondary" id="boton-registrarse" onClick={this.abrirModalRegistro}>REGISTRARSE</Button> : null}
+              
               {tab}
-              <Button color="secondary" id="boton-registrarse" onClick={this.abrirModalPerfil}>PERFIL</Button>
+              {localStorage.getItem("loggedin") != 'False' ?<Button color="secondary" id="boton-perfil" onClick={this.abrirModalPerfil}>PERFIL</Button> : null}
+              
             </div>
           </div>
 
@@ -188,14 +260,27 @@ class App extends React.Component {
             <br></br>
             <form >
               <FormGroup>
-                <textarea type="text" name="publicacion" /*value={this.Publicacion.comentario}*/ onChange={(e) => this.setState({ comentario: e.target.value })} placeholder="Di lo que piensas..." /*contenteditable="true"*/ maxlength="150" rows={3} className="form-control" />
+                <textarea type="text" id="text-post" name="publicacion" /*value={this.Publicacion.comentario}*/ onChange={(e) => this.setState({ comentario: e.target.value })} placeholder="Di lo que piensas..." /*contenteditable="true"*/ maxlength="150" rows={3} className="form-control" />
                 <text style={{ color: "#b8b8b8", marginLeft:"85%", fontSize: 15 }}>150 MAX</text>
+                <input id="text-hash" onChange={(e) => this.setState({ hashs: e.target.value })} style={{ color: "#b8b8b8", fontSize: 15,  }} placeholder="Agrega aqui tus etiquetas separadas por comas"></input>
               </FormGroup>
-              <br></br>
               <div style={{ height: "7%" }}>
-                <button className="boton-post" title="Foto"><FontAwesomeIcon icon={faImages} size="2xl" style={{ color: "#0CCA4A", }} /></button>
-                <button className="boton-post" title="Video"><FontAwesomeIcon icon={faClapperboard} size="2xl" style={{ color: "#0CCA4A", }} /></button>
-                <Button type="submit" id="btn-publicar" placeholder="Publicar" >Hacer publicación</Button>
+                <label for="foto-adj">
+                  <FontAwesomeIcon id="icon-pic" icon={faImages} size="2xl" style={{ color: "#0CCA4A", }} />
+                </label>
+                <input type="file" id="foto-adj" onChange={e =>this.subirarchivos(e.target.files[0])} accept=".jpg, .png, .jpeg"></input>
+                <label for="video-adj">
+                <FontAwesomeIcon  id="icon-vid" icon={faClapperboard} size="2xl" style={{ color: "#0CCA4A", }} />
+                </label>
+                <input type="file" id="video-adj" onChange={e => uploadFile(e.target.files[0])} accept=".mp4"></input>
+                <select id="dropdowncategorias">
+                  <option>Categoria 1</option>
+                  <option>Categoria 2</option>
+                  <option>Categoria 3</option>
+                </select>
+                <Button type="submit" onClick={this.CreatePost} id="btn-publicar" placeholder="Publicar">Hacer publicación</Button>
+                <div id="foto-subir1"></div>
+
               </div>
               <br></br>
             </form>
