@@ -741,3 +741,13 @@ a:-webkit-any-link {
   position: relative;
   left: 50%;
 }
+#error-login{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  color:  red !important;
+  margin-left:  5px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: 0.1s;
+}
+

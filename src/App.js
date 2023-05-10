@@ -84,8 +84,15 @@ class App extends React.Component {
           localStorage.setItem("usuariologgeado", data.usuario._id);
           localStorage.setItem("usernamelogged", data.usuario.username);
           this.setState({ username: data.usuario.username });
+          document.getElementById("inputs-login1").value = "";
+          document.getElementById("inputs-login2").value = "";
+          this.setState({ loginModal: !this.state.loginModal });
 
-        } 
+
+
+        } else{
+          document.getElementsByClassName("error-login").style.opacity = "100%";
+        }
     });
 
     event.preventDefault();
@@ -231,14 +238,16 @@ class App extends React.Component {
             <br></br>
             <form onSubmit={this.Login}>
               <FormGroup>
-                <Input type="text" name="usuario" value={this.state.username} onChange={(e) => this.setState({ username: e.target.value })} placeholder="USUARIO" />
+                <Input type="text" id="inputs-login1" name="usuario" value={this.state.username} onChange={(e) => this.setState({ username: e.target.value })} placeholder="USUARIO" />
               </FormGroup>
               <br></br>
               <FormGroup>
-                <Input type="password" name="password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} placeholder="CONTRASEÑA" />
+                <Input type="password" id="inputs-login2" name="password" value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} placeholder="CONTRASEÑA" />
               </FormGroup>
               <br></br>
               <Button size="lg" block type="submit" id="btn-iniciosesion2" placeholder="Iniciar Sesión" >ENTRAR</Button>
+              <small id="error-login" class="form-text text-muted">Error en credenciales, intente de nuevo.</small>
+
               <br></br>
             </form>
 
@@ -278,8 +287,9 @@ class App extends React.Component {
                   <option>Categoria 2</option>
                   <option>Categoria 3</option>
                 </select>
-                <Button type="submit" onClick={this.CreatePost} id="btn-publicar" placeholder="Publicar">Hacer publicación</Button>
                 <div id="foto-subir1"></div>
+
+                <Button type="submit" onClick={this.CreatePost} id="btn-publicar" placeholder="Publicar">Hacer publicación</Button>
 
               </div>
               <br></br>
