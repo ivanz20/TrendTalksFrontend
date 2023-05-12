@@ -1,0 +1,33 @@
+/*modal para shorts*/
+.modal-content-shorts {
+    --bs-modal-width: 73%;
+    --bs-modal-margin: 0%;
+    --bs-modal-bg: transparent;
+    --bs-modal-border-color: transparent;
+    --bs-modal-header-border-color: transparent;
+    --bs-modal-footer-border-color: transparent;
+}
+
+.svg-shorts {
+    margin-left: 1000px;
+}
+
+
+/*centrar short*/
+.cont-slider {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*contenido short*/
+.slick-slider {
+    width: 309px;
+    height: 550px;
+    /*border-radius: 1%;*/
+    background: #000000;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}

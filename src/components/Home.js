@@ -4,101 +4,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faUnlock, faCircle } from '@fortawesome/free-solid-svg-icons'
+import Shorts from "./Shorts";
 
 export default class PopularPost extends Component {
     render() {
         return (
 
             <div className="contenido-pagina">
-                <text className="pregunta-shortalk">¿Que opinas de la inflación?</text>
-                <div className="shorttalks">
-
-                    <div className="friends-short user">
-                        <div className="fotoperfil isShortUpload"></div>
-                        <text className="nombre-short">Agregar</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">faribb10</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user1</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-
-                </div>
+                <Shorts/>
                 <div className="posts-tt">
                     <div className="post-user">
                         <div className="fotoarea">
