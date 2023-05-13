@@ -70,7 +70,7 @@
   background-color: #C8D3D5;
   border-radius: 50px 0px 0px 50px;
   position: absolute;
-  left: 2%;
+  left: 1%;
   top: 2%;
 }
 
@@ -153,6 +153,24 @@ body{
   transition: 0.5s;
 }
 
+#boton-perfil{
+  background-color: #03802C;
+  border: none;
+  height: 7vh;
+  width: 40vh;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 40px;
+  font-size: medium;
+  transition: 0.5s;
+  margin-top: -10px;
+  font-weight:600;
+}
+#boton-perfil:hover{
+  background-color: white;
+  border: #03802C solid 2px;
+  color: #03802C;
+  transition: 0.5s;
+}
 #boton-registrarse{
   background-color: #03802C;
   border: none;
@@ -207,6 +225,46 @@ body{
   border: none;
 }
 #home-navbar:hover{
+  border: none;
+  transform: scale(1.03);
+  transition: 0.5s;
+  border-radius: 30px;
+  background-color: white;
+  cursor: pointer;
+  width: fit-content;
+}
+
+#notifications-navbar{
+  position: absolute;
+  left: 10%;
+  top: 61%;
+  width: fit-content;
+  padding: 15px;
+  transition: 0.5s;
+  border-radius: 30px ;
+  border: none;
+}
+#notifications-navbar:hover{
+  border: none;
+  transform: scale(1.03);
+  transition: 0.5s;
+  border-radius: 30px;
+  background-color: white;
+  cursor: pointer;
+  width: fit-content;
+}
+
+#inicio-navbar{
+  position: absolute;
+  left: 10%;
+  top: 48%;
+  width: fit-content;
+  padding: 15px;
+  transition: 0.5s;
+  border-radius: 30px ;
+  border: none;
+}
+#inicio-navbar:hover{
   border: none;
   transform: scale(1.03);
   transition: 0.5s;
@@ -280,13 +338,30 @@ body{
     background-color: #0CCA4A;
     border: none;
     height: 7vh;
-    width: 40vh !important;
+    width: 100% !important;
     font-family: 'Montserrat', sans-serif;
     border-radius: 40px;
     font-size: medium;
     transition: 0.5s;
     font-weight:600;
-    margin-left: 28%;
+    margin-top: 2vh;
+}
+#btn-subir{
+  background-color: #0CCA4A;
+  border: none;
+  height: 7vh;
+  width: 30% !important;
+  font-family: 'Montserrat', sans-serif;
+  border-radius: 40px;
+  font-size: small;
+  transition: 0.5s;
+  font-weight:600;
+  position: relative;
+  left: 50%;
+ 
+}
+#btn-subir:hover{
+  transform: scale(1.05);
 }
 
 .pregunta-shortalk{
@@ -592,3 +667,87 @@ a:-webkit-any-link {
 #txt-comment:focus{
   outline: none;
 }
+
+#text-post{
+  resize : none
+}
+#text-hash{
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  outline : none;
+  border: 1px solid #C8D3D5;
+  font-family: 'Montserrat';
+  font-weight:600;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+#foto-adj{
+  display: none;
+}
+#video-adj{
+  display: none;
+}
+#icon-pic{
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  margin-right: 10px;
+}
+#icon-pic:hover{
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+}
+
+#icon-vid{
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+  margin-right: 10px;
+}
+#icon-vid:hover{
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+}
+#foto-subir1 > img{
+  border-radius: 15%;
+  object-fit: cover;
+  width: 130px;
+  height: 130px;
+  transition: 1.5s ease-in;
+
+}
+
+#foto-subir1 {
+  width: 130px;
+  height: 130px;
+  background-color: #03802C;
+  margin-top: 15px;
+  opacity: 0;
+  transition: 1.5s ease-in;
+  border-radius: 15%;
+
+}
+
+#dropdowncategorias{
+  padding: 10px 15px 10px 15px;
+  border-radius: 20px;
+  width: 30%;
+  outline : none;
+  border: 1px solid #C8D3D5;
+  font-family: 'Montserrat';
+  font-weight:500;
+  position: relative;
+  left: 50%;
+}
+#error-login{
+  font-family: 'Montserrat';
+  font-weight: 600;
+  color:  red !important;
+  margin-left:  5px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: 0.1s;
+}
+
