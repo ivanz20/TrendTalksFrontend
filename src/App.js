@@ -18,6 +18,8 @@ import ForYou from "./components/ForYou";
 import Home from "./components/Home";
 import Navegation from "./components/Navegation";
 import Comments from "./components/Comments";
+import { data } from "jquery";
+import axios from 'axios';
 
 
 
@@ -50,10 +52,10 @@ class App extends React.Component {
   RegistrarUsuario = (event) => {
     fetch('https://trendtalks-service.onrender.com/api/users/', {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json',  
+      "access-control-allow-origin": "*",
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': '*', },
       // We convert the React state to JSON and send it as the POST body
       body: JSON.stringify(this.state)
     }).then(function (response) {
@@ -63,15 +65,33 @@ class App extends React.Component {
 
     event.preventDefault();
   }
+  
+  CargarCategorias = (event) =>{
+    axios
+    .get('https://trendtalks-service.onrender.com/api/categories')
+    .then(function (response){  
+      var data = JSON.stringify(response.data)
+      var categories = JSON.parse(data)  
+      var up = document.getElementById("dropdowncategorias");  
+        for(var i in categories){
+          var opt = document.createElement("option")
+          opt.value = categories[i]["categoria"]
+          opt.innerHTML = "<option>" + categories[i]["categoria"] + "</option>"
+          up.appendChild(opt)
+        }
+       
+  })
+}
 
   Login = (event) => {
     //http://localhost:8080/courses/1/comments/1/img
     fetch('https://trendtalks-service.onrender.com/api/users/login', {
       method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json',  
+      "access-control-allow-origin": "*",
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      'Access-Control-Allow-Methods': '*', }
+      ,
       // We convert the React state to JSON and send it as the POST body
       body: JSON.stringify(this.state)
     }).then(response => {
@@ -100,32 +120,34 @@ class App extends React.Component {
 
   CreatePost = (event) =>{
       var today = new Date().toJSON().slice(0, 10);
+      var categoria = document.getElementById("dropdowncategorias").value;  
+
       let data = {
-        "username": this.state.username,
+        "username": localStorage.getItem("usernamelogged"),
         "post_content": this.state.comentario,
         "post_date": today,
         "hashs": this.state.hashs,
-        "category": "idk",
+        "category": categoria,
         "likes": 0,
         "comments": 0,
         "photo_post": this.state.urlfoto,
         "video_post": "urlvideo",
         "user_profilepic": "urlpp",
       }
-      fetch('https://trendtalks-service.onrender.com/api/talkie', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json, text/plain, */*',
-          'Content-Type': 'application/json'
-        },
-        // We convert the React state to JSON and send it as the POST body
-        body: JSON.stringify(data)
-      }).then(function (response) {
-        if(response.status == 200){
-          alert("Publicacion Exitante " + "Status: " + response.status)
-
-        }
-        return response.json();
+      axios.post('https://trendtalks-service.onrender.com/api/talkie',{
+        username : localStorage.getItem("usernamelogged"),
+        post_content: this.state.comentario,
+        post_date: today,
+        hashs: this.state.hashs,
+        category: categoria,
+        likes: 0,
+        comments: 0,
+        photo_post: this.state.urlfoto,
+        video_post: "urlvideo",
+        user_profilepic: "urlpp",
+      }).then((response) => {
+          console.log(response)
+          alert("Publicacion realizada con exito")
       });
 
       event.preventDefault();
@@ -150,7 +172,8 @@ class App extends React.Component {
   abrirModal = () => {
     this.setState({ loginModal: !this.state.loginModal });
   }
-  abrirModalPublicacion = () => {
+  abrirModalPublicacion = async () => {
+    await this.CargarCategorias();
     this.setState({ PublicacionModal: !this.state.PublicacionModal });
   }
   abrirModalRegistro = () => {
@@ -167,6 +190,8 @@ class App extends React.Component {
     this.setState({ urlfoto: result});
 
   }
+
+
 
 
   render() {
@@ -282,10 +307,7 @@ class App extends React.Component {
                 <FontAwesomeIcon  id="icon-vid" icon={faClapperboard} size="2xl" style={{ color: "#0CCA4A", }} />
                 </label>
                 <input type="file" id="video-adj" onChange={e => uploadFile(e.target.files[0])} accept=".mp4"></input>
-                <select id="dropdowncategorias">
-                  <option>Categoria 1</option>
-                  <option>Categoria 2</option>
-                  <option>Categoria 3</option>
+                <select id="dropdowncategorias" >
                 </select>
                 <div id="foto-subir1"></div>
 
