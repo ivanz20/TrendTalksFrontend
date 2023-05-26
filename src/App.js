@@ -18,7 +18,7 @@ import ForYou from "./components/ForYou";
 import Home from "./components/Home";
 import Navegation from "./components/Navegation";
 import Comments from "./components/Comments";
-import { data } from "jquery";
+
 import axios from 'axios';
 
 
