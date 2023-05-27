@@ -50,7 +50,7 @@ export default class PopularPost extends Component {
                                     {post.post_content}
                                     <br />
                                     {post.hashs.split(',').map((hash, hashIndex) => (
-                                        <span key={hashIndex}>#{hash.trim()} </span>
+                                        <span key={hashIndex}>{hash.trim()} </span>
                                     ))}
                                     <br />
                                     <br />

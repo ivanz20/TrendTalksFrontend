@@ -600,6 +600,7 @@ body{
   margin-left: 70%;
   font-family: 'Montserrat';
   font-size: 26px;
+  top: -40px;
 }
 
 .dropdown{
@@ -744,6 +745,16 @@ a:-webkit-any-link {
   font-weight:500;
   position: relative;
   left: 50%;
+}
+#dropdowncategorias2{
+  padding: 10px 15px 10px 15px;
+  border-radius: 20px;
+  width: 30%;
+  outline : none;
+  border: 1px solid #C8D3D5;
+  font-family: 'Montserrat';
+  font-weight:500;
+  position: relative;
 }
 #error-login{
   font-family: 'Montserrat';

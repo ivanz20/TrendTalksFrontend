@@ -21,6 +21,13 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 import axios from 'axios';
 
+let config = {
+  headers : {
+  'Accept': 'application/json, text/plain, */*',
+  'Content-Type': 'application/json'
+  }
+}
+
 
 class App extends React.Component {
 
@@ -147,7 +154,7 @@ class App extends React.Component {
       photo_post: this.state.urlfoto,
       video_post: "urlvideo",
       user_profilepic: "urlpp",
-    }).then((response) => {
+    },config).then((response) => {
 
 
       console.log(response)
@@ -159,7 +166,7 @@ class App extends React.Component {
   VerPerfilUsuario = (event) => {
     var iduser = localStorage.getItem("usuariologgeado")
 
-    
+
 
   }
 

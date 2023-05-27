@@ -16,13 +16,17 @@ export default class PopularPost extends Component {
                     </div>
                     <br />
                     <br />
-                    <DropdownFun></DropdownFun>
+                    <select id="dropdowncategorias2" onChange={(event) => { this.CargarPublicaciones()}} >
+                        <option>Likes</option>
+                        <option>Hashs</option>
+                </select>
                 </div>
                 <div>
 
                 </div>
-                <div className="posts-tt">
+                <div className="posts-tt" id='likes-posts'>
 
+                    <div>
                     <div>
                         <FontAwesomeIcon icon={faHeart} size="2xl" style={{ color: "#CA0C0C", }} />
                         <text id='txt-num-likes'><strong>  102  </strong></text>
@@ -45,75 +49,9 @@ export default class PopularPost extends Component {
                             </div>
                         </div>
                     </div>
-
-                    <div>
-                        <FontAwesomeIcon icon={faHeart} size="2xl" style={{ color: "#CA0C0C", }} />
-                        <text id='txt-num-likes'><strong>  102  </strong></text>
-                        <text><strong>  LIKES  </strong></text>
                     </div>
-                    <div className="post-user">
-                        <div className="fotoarea">
-                            <div className="fotoperfil-post "></div>
-                        </div>
-                        <div className="text-postarea">
-                            <div className="post-content">
-                                <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                                <br></br>
-                                <text>Un saludo a la bandita q la sigue cotorriando</text>
-                                <br></br>
-                                <text>#Cotorro #GPI </text>
-                                <br></br>
-                                <button className="boton-post"><FontAwesomeIcon icon={faUnlock} size="2xl" style={{ color: "#0CCA4A", }} /></button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <FontAwesomeIcon icon={faHeart} size="2xl" style={{ color: "#CA0C0C", }} />
-                        <text id='txt-num-likes'><strong>  102  </strong></text>
-                        <text><strong>  LIKES  </strong></text>
-                    </div>
-                    <div className="post-user">
-                        <div className="fotoarea">
-                            <div className="fotoperfil-post "></div>
-                        </div>
-                        <div className="text-postarea">
-                            <div className="post-content">
-                                <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                                <br></br>
-                                <text>Un saludo a la bandita q la sigue cotorriando</text>
-                                <br></br>
-                                <text>#Cotorro #GPI </text>
-                                <br></br>
-                                <button className="boton-post"><FontAwesomeIcon icon={faUnlock} size="2xl" style={{ color: "#0CCA4A", }} /></button>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <FontAwesomeIcon icon={faHeart} size="2xl" style={{ color: "#CA0C0C", }} />
-                        <text id='txt-num-likes'><strong>  102  </strong></text>
-                        <text><strong>  LIKES  </strong></text>
-                    </div>
-                    <div className="post-user">
-                        <div className="fotoarea">
-                            <div className="fotoperfil-post "></div>
-                        </div>
-                        <div className="text-postarea">
-                            <div className="post-content">
-                                <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                                <br></br>
-                                <text>Un saludo a la bandita q la sigue cotorriando</text>
-                                <br></br>
-                                <text>#Cotorro #GPI </text>
-                                <br></br>
-                                <button className="boton-post"><FontAwesomeIcon icon={faUnlock} size="2xl" style={{ color: "#0CCA4A", }} /></button>
-
-                            </div>
-                        </div>
-                    </div>
+            
+                    
                 </div>
             </div>
         )
