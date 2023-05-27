@@ -311,7 +311,7 @@ body{
   color: #ffffff;
   position:relative;
   top: 63px;
-  left: 140px;
+  left: 145px;
 }
 .Subtitulo-modal{
   font-family: 'Montserrat';
@@ -319,7 +319,8 @@ body{
   color: #ffffff;
   position:relative;
   top: 88px;
-  left: -92px;
+  left: 80px;
+  margin-bottom: 40px;
 }
 #btn-registro{
   padding: 10px;
@@ -767,4 +768,8 @@ a:-webkit-any-link {
 }
 #short-adj{
   opacity: 0; position: absolute; top: 0; left: 0; bottom: 0; right: 0; width: 100%; height:100%; cursor: pointer;
+}
+.perfil-cuadro{
+  height: 300px;
+  width: 460px;
 }

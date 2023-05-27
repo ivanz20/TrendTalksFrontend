@@ -6,6 +6,9 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faUnlock, faCircle,faLock } from '@fortawesome/free-solid-svg-icons'
 import Shorts from "./Shorts";
 import { axiosBase as axios } from "../config";
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, FormGroup, Input, Label, List } from 'reactstrap';
+
+import { Display, SdCard, XCircle } from 'react-bootstrap-icons';
 
 var flag = true;
 
@@ -13,9 +16,37 @@ export default class PopularPost extends Component {
 
     state = {
         posts: [],
+        PerfilModal2: false,
+
     };
+    
+
+
+    VerPerfilUsuario = async (username) => {
+            await axios
+              .get('https://trendtalks-service.onrender.com/api/users/perfil/' + username)
+              .then(function (response) {
+                var data = response.data
+                localStorage.setItem("nameclick",data[0].name)
+                localStorage.setItem("usernameclick",data[0].username)
+                localStorage.setItem("idclick",data[0]._id)
+               
+              })
+    }
+
+    follow = () => {
+
+    }
+
+    
+    abrirModalPerfil2 = (user) => {
+        this.VerPerfilUsuario(user)
+        this.setState({ PerfilModal2: !this.state.PerfilModal2 });
+      }
 
     render() {
+        const tab2 = <>&nbsp;&nbsp;&nbsp;</>;
+
         const { posts } = this.state;
 
         if (flag) {
@@ -25,8 +56,6 @@ export default class PopularPost extends Component {
                     this.setState({ posts: res.data.posts });
                 })
                 .catch((err) => {
-                    alert('Usuario no existe');
-                    console.log(err);
                 })
 
             //flag = false
@@ -40,7 +69,7 @@ export default class PopularPost extends Component {
 
                     {posts.map((post, index) => (
                         <div className="post-user" key={index}>
-                            <div className="fotoarea">
+                            <div className="fotoarea"  onClick={() => this.abrirModalPerfil2(this.VerPerfilUsuario(post.username))}>
                                 <div className="fotoperfil-post"></div>
                             </div>
                             <div className="text-postarea">
@@ -66,7 +95,26 @@ export default class PopularPost extends Component {
 
 
                 </div>
+                <Modal isOpen={this.state.PerfilModal2} className="perfil-cuadro" >
+                    <ModalHeader style={{backgroundColor: "black"}}>
+
+                        <div id="perfil-user">
+                            <XCircle color="white" size={20} onClick={this.abrirModalPerfilotro2Perfil2} />
+                            {tab2}
+                            <text className="titulo-modal-perfil">{localStorage.getItem("nameclick")}</text>
+                            <text className="Subtitulo-modal">{localStorage.getItem("usernameclick")}</text>
+                            <div className="friends-short">
+                            <div className="fotoperfil-friend isShortUpload Perfil-perfil"></div>
+                            <text className="nombre-short"></text>
+                            <Button color="success" id="boton-follow" onClick={()=>this.follow(localStorage.getItem("usernameclick"))} >Seguir</Button>
+                        </div>
+
+                        </div>
+                    </ModalHeader>
+                </Modal>
+
             </div>
+            
         )
     }
 }

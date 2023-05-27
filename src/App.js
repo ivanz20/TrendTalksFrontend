@@ -112,6 +112,8 @@ class App extends React.Component {
           console.log(data)
           localStorage.setItem("loggedin", "True");
           localStorage.setItem("usuariologgeado", data.usuario._id);
+          localStorage.setItem("namelogged", data.usuario.name);
+
           localStorage.setItem("usernamelogged", data.usuario.username);
           this.setState({ username: data.usuario.username });
           document.getElementById("inputs-login1").value = "";
@@ -163,13 +165,7 @@ class App extends React.Component {
     event.preventDefault();
   }
 
-  VerPerfilUsuario = (event) => {
-    var iduser = localStorage.getItem("usuariologgeado")
-
-
-
-  }
-
+  
   state = {
     loginModal: false,
     RegisterModal: false,
@@ -198,8 +194,7 @@ class App extends React.Component {
     this.setState({ RegisterModal: !this.state.RegisterModal });
   }
   abrirModalPerfil = () => {
-    this.VerPerfilUsuario();
-    this.setState({ PerfilModal: !this.state.PerfilModal });
+     this.setState({ PerfilModal: !this.state.PerfilModal });
   }
 
   subirarchivos = async (archivo) => {
@@ -234,11 +229,11 @@ class App extends React.Component {
                 <FontAwesomeIcon icon={faHouse} size="xl" color="#738386" />
                 <text className="navbar-items">INICIO</text>
               </Link> : null}
-
+{/* 
               {localStorage.getItem("loggedin") != 'False' ? <Link id="notifications-navbar" to="/Notifiaciones">
-                <FontAwesomeIcon icon={faBell} size="xl" color="#738386" />
+                <FontAwesomeIcon icon={} size="xl" color="#738386" />
                 <text className="navbar-items">NOTIFICACIONES</text>
-              </Link> : null}
+              </Link> : null} */}
 
 
             </div>
@@ -383,67 +378,24 @@ class App extends React.Component {
 
         </Modal>
 
-        <Modal isOpen={this.state.PerfilModal}>
-          <ModalHeader>
+        <Modal isOpen={this.state.PerfilModal} className="perfil-cuadro" >
+          <ModalHeader style={{backgroundColor: "black"}}>
 
-            <div class="Imagen-Fondo">
-              <XCircle color="white" size={30} onClick={this.abrirModalPerfil} />
-              {tab}
-              <text className="titulo-modal-perfil">NOMBRE DE USUARIO</text>
-              <text className="Subtitulo-modal">@CorreoUsuario</text>
-              <div className="friends-short">
+            <div id="perfil-user">
+                <XCircle color="white" size={20} onClick={this.abrirModalPerfil} />
+                {tab}
+                <text className="titulo-modal-perfil">{localStorage.getItem("namelogged")}</text>
+                <text className="Subtitulo-modal">{localStorage.getItem("usernamelogged")}</text>
+                <div className="friends-short">
                 <div className="fotoperfil-friend isShortUpload Perfil-perfil"></div>
                 <text className="nombre-short"></text>
-                <Button color="success" id="boton-follow" >Seguir</Button>
-
+                <Button color="success" id="boton-follow">Seguir</Button>
               </div>
 
             </div>
           </ModalHeader>
 
-          <ModalBody>
-            <div className="post-user-perfil">
-
-              <div className="text-postarea-perfil">
-                <div className="post-content-perfil">
-                  <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
-                  <br></br>
-                  <text className="Nlikes_comentarios">3 likes - 2 comentarios</text>
-                  <br></br>
-                  <text className="HorayFecha">@Oscarin21 - Hace 10 minutos</text>
-                </div>
-              </div>
-            </div>
-
-            <div className="post-user-perfil">
-
-              <div className="text-postarea-perfil">
-                <div className="post-content-perfil">
-                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                  <br></br>
-                  <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
-                  <br></br>
-                  <text>#Tecate #Helado</text>
-                  <br></br>
-                </div>
-              </div>
-
-            </div>
-            <div className="post-user-perfil">
-
-              <div className="text-postarea-perfil">
-                <div className="post-content-perfil">
-                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                  <br></br>
-                  <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
-                  <br></br>
-                  <text>#Tecate #Helado</text>
-                  <br></br>
-                </div>
-              </div>
-            </div>
-          </ModalBody>
-
+         
 
           <ModalFooter>
 

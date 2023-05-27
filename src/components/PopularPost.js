@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment, faUnlock, faCircle, faHeart } from '@fortawesome/free-solid-svg-icons'
 
 export default class PopularPost extends Component {
+
     render() {
         return (
             <div className="contenido-pagina">
@@ -18,7 +19,6 @@ export default class PopularPost extends Component {
                     <br />
                     <select id="dropdowncategorias2" onChange={(event) => { this.CargarPublicaciones()}} >
                         <option>Likes</option>
-                        <option>Hashs</option>
                 </select>
                 </div>
                 <div>
@@ -58,24 +58,4 @@ export default class PopularPost extends Component {
     }
 }
 
-function DropdownFun() {
 
-    const [dropdown, setDropdown] = useState(false);
-
-    const abrirCerrarDropdown = () => {
-        setDropdown(!dropdown);
-    }
-
-    return (
-
-        <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown} >
-            <DropdownToggle caret>Likes</DropdownToggle>
-            <DropdownMenu>
-                <DropdownItem header>Filtros</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem href="/PopularPost">Likes</DropdownItem>
-                <DropdownItem href="/PopularHash">Hashs</DropdownItem>
-            </DropdownMenu>
-        </Dropdown>
-    );
-}
