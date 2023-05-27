@@ -57,7 +57,7 @@ export default class PopularPost extends Component {
                                     {post.photo_post.length  > 10 && <img src={post.photo_post} width={"200px"}></img> }
                                     {localStorage.getItem("loggedin") == true && <button className="boton-post" id="likebtn"><FontAwesomeIcon icon={faHeart} size="2xl" style={{ color: "#CA0C0C" }} /></button>}
                                     {localStorage.getItem("loggedin") == true && <button className="boton-post"><FontAwesomeIcon icon={faComment} size="2xl" style={{ color: "#0CCA4A" }} /></button>}
-                                    {!!localStorage.getItem("loggedin")  && <button className="boton-post"><FontAwesomeIcon icon={faLock} size="2xl" style={{color: "#858585",}} /></button>}
+                                    {!!localStorage.getItem("loggedin")==false && <button className="boton-post"><FontAwesomeIcon icon={faLock} size="2xl" style={{color: "#858585",}} /></button>}
                                 </div>
                             </div>
                         </div>
