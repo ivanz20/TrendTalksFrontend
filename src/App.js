@@ -33,7 +33,6 @@ class App extends React.Component {
       localStorage.setItem("loggedin", "False");
     }
     super(props)
-
   }
   handleSubmit = (e) => {
     e.preventDefault();
@@ -51,8 +50,8 @@ class App extends React.Component {
 
   RegistrarUsuario = (event) => {
 
-    //fetch('https://trendtalks-service.onrender.com/api/users/', {
-    fetch('http://localhost:3001/api/users/', {
+    fetch('https://trendtalks-service.onrender.com/api/users/', {
+   // fetch('http://localhost:3001/api/users/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -90,8 +89,8 @@ class App extends React.Component {
 
     const navigate = useNavigate(); // Create a navigate function
 
-    //fetch('https://trendtalks-service.onrender.com/api/users/login', {
-    fetch('http://localhost:3001/api/users/login', {
+    fetch('https://trendtalks-service.onrender.com/api/users/login', {
+  //  fetch('http://localhost:3001/api/users/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -141,8 +140,8 @@ class App extends React.Component {
       "video_post": "urlvideo",
       "user_profilepic": "urlpp",
     }
-    // axios.post('https://trendtalks-service.onrender.com/api/talkie', {
-    axios.post('http://localhost:3001/api/talkie', {
+     axios.post('https://trendtalks-service.onrender.com/api/talkie', {
+    //axios.post('api/talkie', {
       username: localStorage.getItem("usernamelogged"),
       post_content: this.state.comentario,
       post_date: today,
@@ -161,8 +160,6 @@ class App extends React.Component {
     });
     event.preventDefault();
   }
-
-
 
   state = {
     loginModal: false,
