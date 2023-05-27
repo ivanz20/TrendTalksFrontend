@@ -32,14 +32,14 @@
   background-image:"./img/image1.jpeg";
 }
 .Imagen-Fondo {
-  background-image:url("./img/descarga.jfif");
-  margin-left: auto;
-  background-attachment: fixed;
-  background-size:35%;
-  position:static;
-  border-radius: 2%;
-  width:468px;
-  height:220px;
+  /*background-image:url("./img/descarga.jfif");*/
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  width: 430px;;
+  height:auto;
+  color: #03802C;
+  right: -23px;
 }
 .App-link {
   color: #61dafb;
@@ -55,7 +55,8 @@
 }
 
 .Nlikes_comentarios{
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /*font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;*/
+  font-size: 14px;
 }
 .HorayFecha{
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -142,8 +143,8 @@ body{
   transition: 0.5s;
   font-weight:600;
   position: relative;
-  left: 145px;
-  top: -66px;
+  left: 90px;
+  top: -58px;
 }
 
 #boton-follow:hover{
@@ -308,19 +309,30 @@ body{
 .titulo-modal-perfil{
   font-family: 'Montserrat';
   font-weight:900;
-  color: #ffffff;
+  color:"#0CCA4A";
   position:relative;
-  top: 63px;
-  left: 140px;
+  top: 43px;
+  left: 186px;
 }
 .Subtitulo-modal{
   font-family: 'Montserrat';
   font-weight:500;
-  color: #ffffff;
+  color:"#0CCA4A";
   position:relative;
-  top: 88px;
-  left: -92px;
+  top: 78px;
+  left: -3px;
 }
+
+.titulo-publicaciones-perfil{
+  font-family: 'Montserrat';
+  font-weight:900;
+  color:"#0CCA4A";
+  position:relative;
+  top: 0px;
+  color:#555555;
+  left: -320px;
+}
+
 #btn-registro{
   padding: 10px;
   border-radius: 50px;
@@ -425,6 +437,7 @@ body{
   position: relative;
   margin-left: 20%;
 }
+
 .fotoperfil-friend{
   position: relative;
   width: 12.5vh;

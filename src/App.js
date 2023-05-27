@@ -343,69 +343,73 @@ class App extends React.Component {
         </Modal>
 
         <Modal isOpen={this.state.PerfilModal}>
-          <ModalHeader>
 
+          <ModalHeader>
+            <XCircle color="#0CCA4A" size={30} onClick={this.abrirModalPerfil} />
+            {tab}
+            <text className="titulo-modal">PERFIL DE USUARIO</text>
+          </ModalHeader>
+
+          <ModalBody >
             <div class="Imagen-Fondo">
-              <XCircle color="white" size={30} onClick={this.abrirModalPerfil} />
-              {tab}
               <text className="titulo-modal-perfil">NOMBRE DE USUARIO</text>
               <text className="Subtitulo-modal">@CorreoUsuario</text>
-              <div className="friends-short">
+              <div className="perfil-short">
                 <div className="fotoperfil-friend isShortUpload Perfil-perfil"></div>
                 <text className="nombre-short"></text>
                 <Button color="success" id="boton-follow" >Seguir</Button>
-
-              </div>
-
-            </div>
-          </ModalHeader>
-
-          <ModalBody>
-            <div className="post-user-perfil">
-
-              <div className="text-postarea-perfil">
-                <div className="post-content-perfil">
-                  <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
-                  <br></br>
-                  <text className="Nlikes_comentarios">3 likes - 2 comentarios</text>
-                  <br></br>
-                  <text className="HorayFecha">@Oscarin21 - Hace 10 minutos</text>
-                </div>
-              </div>
-            </div>
-            <div className="post-user-perfil">
-
-              <div className="text-postarea-perfil">
-                <div className="post-content-perfil">
-                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                  <br></br>
-                  <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
-                  <br></br>
-                  <text>#Tecate #Helado</text>
-                  <br></br>
-                </div>
-              </div>
-            </div>
-            <div className="post-user-perfil">
-
-              <div className="text-postarea-perfil">
-                <div className="post-content-perfil">
-                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
-                  <br></br>
-                  <text>Q ganas de una caguama elada  caguama eladaQ ganas de una caguama elada</text>
-                  <br></br>
-                  <text>#Tecate #Helado</text>
-                  <br></br>
-                </div>
               </div>
             </div>
           </ModalBody>
+
           <ModalFooter>
+
+            <text className="titulo-publicaciones-perfil">PUBLICACIONES</text>
+
+            <div className="post-user-perfil">
+
+              <div className="text-postarea-perfil">
+                <div className="post-content-perfil">
+                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                  <br></br>
+                  <text><strong>Ya se antoja un año sabatico</strong></text>
+                  <br></br>
+                  <text className="Nlikes_comentarios">3 likes - 2 comentarios</text>
+                </div>
+              </div>
+            </div>
+
+            <div className="post-user-perfil">
+
+              <div className="text-postarea-perfil">
+                <div className="post-content-perfil">
+                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                  <br></br>
+                  <text><strong>Ya se antoja un año sabatico</strong></text>
+                  <br></br>
+                  <text className="Nlikes_comentarios">3 likes - 2 comentarios</text>
+                </div>
+              </div>
+
+            </div>
+            <div className="post-user-perfil">
+
+              <div className="text-postarea-perfil">
+                <div className="post-content-perfil">
+                  <text><strong>@Oscarin21 </strong>- Hace 10 minutos</text>
+                  <br></br>
+                  <text><strong>Ya se antoja un año sabatico</strong></text>
+                  <br></br>
+                  <text className="Nlikes_comentarios">3 likes - 2 comentarios</text>
+                </div>
+              </div>
+            </div>
+
 
             <br></br>
           </ModalFooter>
 
-        </Modal>
+        </Modal >
       </>
     )
   }
