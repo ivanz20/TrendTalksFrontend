@@ -156,6 +156,13 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  VerPerfilUsuario = (event) => {
+    var iduser = localStorage.getItem("usuariologgeado")
+
+    
+
+  }
+
   state = {
     loginModal: false,
     RegisterModal: false,
@@ -184,6 +191,7 @@ class App extends React.Component {
     this.setState({ RegisterModal: !this.state.RegisterModal });
   }
   abrirModalPerfil = () => {
+    this.VerPerfilUsuario();
     this.setState({ PerfilModal: !this.state.PerfilModal });
   }
 
