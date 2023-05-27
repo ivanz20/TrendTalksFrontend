@@ -23,3 +23,10 @@ export async function uploadFile(file){
     const url = await getDownloadURL(storageref)
     return url
 }
+
+export async function uploadFileVideo(file){
+  const storageref = ref(storage,"/short-video/" + v4())
+  await uploadBytes(storageref,file)
+  const url = await getDownloadURL(storageref)
+  return url
+}

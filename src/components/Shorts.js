@@ -11,23 +11,51 @@ import Vid1 from "../Life.mp4";
 import Vid2 from "../videos/1.mp4";
 import Vid3 from "../videos/2.mp4";
 import Vid4 from "../videos/3.mp4";
-
+import { uploadFileVideo } from '../firebase/config'
 import "../Shorts.css";
 
 // SWIPER
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import axios from "axios";
+
+let config = {
+    headers : {
+    'Accept': 'application/json, text/plain, */*',
+    'Content-Type': 'application/json'
+    }
+}
 
 class Shorts extends React.Component {
 
     state = {
-        shortModal: false
+        shortModal: false,
     }
 
+  
     abrirModalShort = () => {
         this.setState({ shortModal: !this.state.shortModal });
     }
+
+    UploadMyShort = (VideoUrl) => {
+        var IDUsuario = localStorage.getItem("usuariologgeado")
+        axios.put("https://trendtalks-service.onrender.com/api/users/uploadshort/" + IDUsuario,{
+            shortalks : VideoUrl,
+            isShortTalkUpload : 1
+        },config).then((response) => {
+            console.log(response)
+            alert("Short subido exitosamente")
+        })
+    }
+
+    subirarchivos = async (archivo) => {
+        const result = await uploadFileVideo(archivo)
+        console.log(result)
+        this.setState({ shortTalkURL: result });
+        this.UploadMyShort(result);
+
+      }
 
     render() {
         const videos = [
@@ -78,7 +106,9 @@ class Shorts extends React.Component {
                 <div className="shorttalks">
 
                     <div className="friends-short user">
-                        <div className="fotoperfil isShortUpload"></div>
+                        <div className="fotoperfil isShortUpload">
+                        <input  type="file" id="short-adj" onChange={e => this.subirarchivos(e.target.files[0])} accept=".mp4"></input>
+                        </div>
                         <text className="nombre-short">Agregar</text>
                     </div>
 
@@ -87,82 +117,6 @@ class Shorts extends React.Component {
                         <text className="nombre-short">faribb10</text>
                     </div>
 
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user1</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload"></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend isShortUpload "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user2</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user3</text>
-                    </div>
-                    <div className="friends-short">
-                        <div className="fotoperfil-friend "></div>
-                        <text className="nombre-short">user4</text>
-                    </div>
                 </div>
                 <Modal isOpen={this.state.shortModal} className="modal-content-shorts">
                     <ModalHeader>

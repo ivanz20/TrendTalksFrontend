@@ -6,7 +6,7 @@ import { Display, SdCard, XCircle } from 'react-bootstrap-icons';
 import imagen from './img/image1.jpeg';
 import logo from './img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHashtag, faImages, faClapperboard, faBell, faHouse } from '@fortawesome/free-solid-svg-icons'
+import { faHashtag, faImages, faClapperboard, faBell, faHouse, faL } from '@fortawesome/free-solid-svg-icons'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faComment } from '@fortawesome/free-solid-svg-icons'
 import { uploadFile } from './firebase/config'
@@ -21,9 +21,6 @@ import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 import axios from 'axios';
 
-function getPosts() {
-
-}
 
 class App extends React.Component {
 
@@ -46,6 +43,9 @@ class App extends React.Component {
     this.setState({ hashs: "" });
     this.setState({ fotopost: "" });
     this.setState({ videopost: "" });
+    this.setState({shortalks:""});
+    this.setState({isShortTalkUpload: false});
+    this.state({profile_pic:""});
   };
 
   RegistrarUsuario = (event) => {
@@ -54,10 +54,8 @@ class App extends React.Component {
    // fetch('http://localhost:3001/api/users/', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(this.state)
     }).then(function (response) {
@@ -87,16 +85,13 @@ class App extends React.Component {
 
   Login = (event) => {
 
-    const navigate = useNavigate(); // Create a navigate function
 
     fetch('https://trendtalks-service.onrender.com/api/users/login', {
   //  fetch('http://localhost:3001/api/users/login', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        "access-control-allow-origin": "*",
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        'Access-Control-Allow-Methods': '*',
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
       }
       ,
       // We convert the React state to JSON and send it as the POST body
@@ -105,8 +100,8 @@ class App extends React.Component {
       return response.json();
     })
       .then(data => {
+        console.log(data)
         if (data.ok == true) {
-          console.log("Me pude loguear")
           console.log(data)
           localStorage.setItem("loggedin", "True");
           localStorage.setItem("usuariologgeado", data.usuario._id);
@@ -215,7 +210,7 @@ class App extends React.Component {
           <div className="principal">
             <div className="navbar-opciones">
               <img id="logo-tt" src={logo} style={{ width: '15%' }}></img>
-              <input id="barra-buscar" placeholder="Buscar" />
+              {/* <input id="barra-buscar" placeholder="Buscar" /> */}
               <Link id="home-navbar" to="/Explore">
                 <FontAwesomeIcon icon={faHashtag} size="xl" color="#738386" />
                 <text className="navbar-items">EXPLORAR</text>
